@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 20 14.3% 4.1%;
+  --muted: 60 4.8% 95.9%;
+  --muted-foreground: 25 5.3% 44.7%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 20 14.3% 4.1%;
+  --card: 0 0% 100%;
+  --card-foreground: 20 14.3% 4.1%;
+  --border: 20 5.9% 90%;
+  --input: 20 5.9% 90%;
+  --primary: 207 90% 54%;
+  --primary-foreground: 211 100% 99%;
+  --secondary: 60 4.8% 95.9%;
+  --secondary-foreground: 24 9.8% 10%;
+  --accent: 60 4.8% 95.9%;
+  --accent-foreground: 24 9.8% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --ring: 20 14.3% 4.1%;
+  --radius: 0.5rem;
+  
+  /* Custom colors for our slideshow */
+  --brand-pink: 345 39% 77%;
+  --brand-yellow: 41 78% 52%;
+  --brand-peach: 33 79% 64%;
+  --brand-teal: 171 70% 37%;
+}
+
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --primary: 207 90% 54%;
+  --primary-foreground: 211 100% 99%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 240 4.9% 83.9%;
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+/* Slideshow specific styles */
+.slide {
+  @apply absolute inset-0 flex flex-col justify-center items-center p-6;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.slide-enter {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.slide-exit {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.dot {
+  @apply w-3 h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition-all focus:outline-none;
+}
+
+.dot.active {
+  @apply bg-opacity-100 transform scale-110;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.pulse-animation {
+  animation: pulse 2s infinite;
+}
+
+.swipe-overlay {
+  touch-action: pan-y;
+}
+
+/* Color utilities based on our custom brand colors */
+.bg-brand-pink {
+  background-color: #ddadb8;
+}
+
+.bg-brand-yellow {
+  background-color: #e5ab24;
+}
+
+.bg-brand-peach {
+  background-color: #ecad59;
+}
+
+.bg-brand-teal {
+  background-color: #1b9f92;
+}
+
+.text-brand-pink {
+  color: #ddadb8;
+}
+
+.text-brand-yellow {
+  color: #e5ab24;
+}
+
+.text-brand-peach {
+  color: #ecad59;
+}
+
+.text-brand-teal {
+  color: #1b9f92;
+}
